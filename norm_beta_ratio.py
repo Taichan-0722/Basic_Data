@@ -59,21 +59,10 @@ de_double = differential_evolution(residual_double, bounds_double, maxiter=10000
 first_p_single = de_single.x
 first_p_double = de_double.x
 
-if xerr_or_not == "yes":
+sx = xerr_ave if xerr_or_not == "yes" else None
+sy = yerr_ave if yerr_or_not == "yes" else None
 
-    if yerr_or_not == "yes":
-        data = RealData(x_data, y_data, sx=xerr_ave, sy=yerr_ave)
-
-    elif yerr_or_not == "no":
-        data = RealData(x_data, y_data, sx=xerr_ave)
-
-elif xerr_or_not == "no":
-
-    if yerr_or_not == "yes":
-        data = RealData(x_data, y_data, sy=yerr_ave)
-
-    elif yerr_or_not == "no":
-        data = RealData(x_data, y_data)
+data = RealData(x_data, y_data, sx=sx, sy=sy)
 
 model_single = Model(single_beta_model)
 model_double = Model(double_beta_model)
@@ -81,13 +70,20 @@ model_double = Model(double_beta_model)
 odr_single = ODR(data, model_single, beta0=first_p_single)
 odr_double = ODR(data, model_double, beta0=first_p_double)
 
+if xerr_or_not == "yes":
+    odr_single.set_job(fit_type=0)
+    odr_double.set_job(fit_type=0)
+else:
+    odr_single.set_job(fit_type=2)
+    odr_double.set_job(fit_type=2)
+
 output_single = odr_single.run()
 output_double = odr_double.run()
 
 second_p_single = output_single.beta
 second_p_double = output_double.beta
 
-x_line = np.linspace(min(x_data), max(x_data), 100)
+x_line = np.linspace(min(x_data), max(x_data), 1000)
 
 y_line_single = single_beta_model(second_p_single, x_line)
 y_line_double = double_beta_model(second_p_double, x_line)

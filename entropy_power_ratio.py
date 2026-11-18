@@ -43,30 +43,22 @@ yerr_ave = (yerr_low + yerr_high) / 2
 def residual(parameters):
     return np.sum((y_data - power_model(parameters, x_data)) ** 2)
 
-bounds = [(-100, 100), (0, 100), (-10, 10)]
-
+bounds = [(-1000, 1000), (0, 1000), (-10, 10)]
 DE = differential_evolution(residual, bounds, maxiter=100000, popsize=50)
-
 first_paremeters = DE.x
 
-if xerr_or_not == "yes":
+sx = xerr_ave if xerr_or_not == "yes" else None
+sy = yerr_ave if yerr_or_not == "yes" else None
 
-    if yerr_or_not == "yes":
-        data = RealData(x_data, y_data, sx=xerr_ave, sy=yerr_ave)
-
-    elif yerr_or_not == "no":
-        data = RealData(x_data, y_data, sx=xerr_ave)
-
-elif xerr_or_not == "no":
-
-    if yerr_or_not == "yes":
-        data = RealData(x_data, y_data, sy=yerr_ave)
-
-    elif yerr_or_not == "no":
-        data = RealData(x_data, y_data)
-
+data = RealData(x_data, y_data, sx=sx, sy=sy)
 model = Model(power_model)
 odr = ODR(data, model, beta0=first_paremeters)
+
+if xerr_or_not == "yes":
+    odr.set_job(fit_type=0)
+else:
+    odr.set_job(fit_type=2)
+
 output = odr.run()
 second_parameters = output.beta
 
