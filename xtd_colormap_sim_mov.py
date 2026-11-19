@@ -11,6 +11,7 @@ from matplotlib.cm import ScalarMappable
 from astropy.io import fits
 from astropy.wcs import WCS
 from regions import Regions
+from cmcrameri import cm
 
 colorbar_label = "Temperature (keV)"
 colorbar_type = "gnuplot2"

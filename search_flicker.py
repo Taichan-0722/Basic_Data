@@ -8,6 +8,7 @@ import collections
 import lmfit as lf
 import lmfit.models as lfm
 from scipy.stats import poisson
+from cmcrameri import cm
 
 def poisson_distribution(x, mu):
     return poisson.pmf(x, mu)

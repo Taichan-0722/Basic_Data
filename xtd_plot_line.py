@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize, LogNorm
+from cmcrameri import cm
 
 title = "Angle vs Norm"
 xlabel = "Position Angle from West (degree)"

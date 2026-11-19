@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.odr import ODR, Model, RealData
+from cmcrameri import cm
 
 # 線形モデル
 def linear_model(params, x):

@@ -11,6 +11,7 @@ from astropy.coordinates import SkyCoord
 from astropy import units as u
 from regions import Regions
 from reproject import reproject_interp
+from cmcrameri import cm
 
 title = "HOGE Map"
 colorbar_label = "HOGE (hoge)"

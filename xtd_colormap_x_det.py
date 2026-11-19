@@ -8,6 +8,7 @@ from matplotlib.cm import ScalarMappable
 from astropy.io import fits
 from astropy.wcs import WCS
 from regions import Regions
+from cmcrameri import cm
 
 image_color = "gnuplot2"
 center_detx = 0.0

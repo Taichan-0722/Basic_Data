@@ -11,6 +11,7 @@ from matplotlib.cm import ScalarMappable
 from astropy.io import fits
 from astropy.wcs import WCS
 from regions import Regions
+from cmcrameri import cm
 
 param_index = 5
 Vx_index = 3

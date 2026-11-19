@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize, LogNorm
+from cmcrameri import cm
 
 title = "Radius vs Norm"
 xlabel = "Distance from the center (arcmin)"

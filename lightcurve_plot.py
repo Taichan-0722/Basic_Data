@@ -2,6 +2,7 @@ import os
 import sys
 from astropy.io import fits
 import matplotlib.pyplot as plt
+from cmcrameri import cm
 
 marker_size = 1
 marker_color = "dodgerblue"

@@ -11,6 +11,7 @@ from astropy.wcs import WCS
 from astropy.coordinates import SkyCoord
 from regions import Regions
 from reproject import reproject_interp
+from cmcrameri import cm
 
 optical_image_color = "Greys_r"
 count_image_color = "gnuplot2"

@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.odr import ODR, Model, RealData
 from scipy.optimize import differential_evolution
+from cmcrameri import cm
 
 point_format = "o"
 point_color = "c"

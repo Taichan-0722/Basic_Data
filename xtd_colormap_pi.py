@@ -10,6 +10,7 @@ from astropy.wcs import WCS
 from astropy.coordinates import SkyCoord
 from astropy import units as u
 from regions import Regions
+from cmcrameri import cm
 
 title = "Temperature Map"
 colorbar_label = "Temperature (keV)"
