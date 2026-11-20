@@ -17,7 +17,7 @@ Azimuth = np.tile(azimuth, (2, 1))
 fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
 for spine in ax.spines.values():
     spine.set_visible(False)
-ax.pcolormesh(Theta, Radius, Azimuth, cmap='hsv', shading='gouraud')
+ax.pcolormesh(Theta, Radius, Azimuth, cmap=cm.romaO, shading='gouraud')
 ax.set_thetagrids([0, 90, 180, 270], labels=["W", "N", "E", "S"], color="black")
 ax.set_yticklabels([])
 ax.grid(False)
